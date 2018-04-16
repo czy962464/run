@@ -1,6 +1,7 @@
 <template>
   <div class="index">
-    <index-header></index-header>
+    <index-header @change='handleChange'></index-header>
+    <index-content v-show='isShow'></index-content>
     <index-step :indexList="indexList" :species='species'></index-step>
     <index-canvas></index-canvas>
   	<install></install>
@@ -13,6 +14,7 @@
   import axios from 'axios'
   import IndexCanvas from './canvas.vue'
   import IndexHeader from './header.vue'
+  import IndexContent from './content.vue'
   import IndexStep from './step.vue'
   import Install from './install'
   import MotionData from './data'
@@ -23,7 +25,8 @@
       return {
         indexList: [],
         movement: [],
-        species: []
+        species: [],
+        isShow: false
       }
     },
     components: {
@@ -32,7 +35,8 @@
       IndexCanvas,
       Bottom,
       Install,
-      MotionData
+      MotionData,
+      IndexContent
     },
     mounted () {
       axios.get('/static/index.json')
@@ -50,6 +54,9 @@
       },
       handleIndexAjaxErr (err) {
         console.log(err)
+      },
+      handleChange () {
+        this.isShow = !this.isShow
       }
     }
   }

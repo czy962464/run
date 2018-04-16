@@ -39,7 +39,8 @@
         isCodeNum: true,
         inputCode: '',
         nameCheck: false,
-        pwdCheck: false
+        pwdCheck: false,
+        randomcode: ''
       }
     },
     methods: {
@@ -77,6 +78,7 @@
         console.log('服务器连接失败')
       },
       handleGetPhoneCode () {
+        this.randomcode = this.getRandomCode()
         if (this.isCodeNum) {
           this.isCodeNum = false
           if (this.$refs.username.value) {
@@ -92,20 +94,35 @@
                 this.$refs.codeBtn.innerHTML = '获取验证码'
               }
             }, 1000)
-            axios.get('/api/user/code?username=' + this.username)
-            .then(this.handlePhoneCodeSucc.bind(this))
-            // axios.get('/api/code.json')
+            // axios.get('/static/code.json')
             // .then(this.handlePhoneCodeSucc.bind(this))
+            axios({
+              method: 'post',
+              url: '/code',
+              data: {
+                sid: 'bbcf4dd1920b2f6e3f1dfab86ce1aa96',
+                token: 'd4ea631cbf617638388d3b1c2216d336',
+                appid: 'c9a69818c8404ff2ad85975d92140f3f',
+                templateid: '299745',
+                mobile: this.username,
+                param: this.randomcode
+              },
+              headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'Accept': 'application/json'
+              }
+            })
+            .then(this.handlePhoneCodeSucc.bind(this))
           }
         }
       },
       handlePhoneCodeSucc (res) {
         res = (res.data) ? res.data : null
-        this.code = res.code
+        this.code = this.randomcode
       },
       handleDataCorrect (res) {
-        this.inputCode = Number(this.$refs.codenum.value)
-        if (res.error === false) {
+        this.inputCode = this.$refs.codenum.value
+        if (res.data.register === false) {
           this.$refs.regname.innerHTML = '用户名已注册'
         } else {
           if (this.inputCode !== this.code) {
@@ -155,6 +172,13 @@
         } else {
           this.pwdCheck = true
         }
+      },
+      getRandomCode () {
+        var str = ''
+        for (let i = 0; i < 6; i++) {
+          str += parseInt(Math.random() * 10)
+        }
+        return str
       }
     }
   }

@@ -9,8 +9,8 @@
       </div>
       <i class="iconfont head-icon" @click='handleToLogin'>&#xe659;</i>
   	</div>
-    <h2 class="about-title">新导航人</h2>
-    <h4 class="desc">这个家伙很懒，什么都没有留下</h4>
+    <h2 class="about-title">{{userinfo.nickname}}</h2>
+    <h4 class="desc">{{userinfo.signature}}</h4>
     <div class="head-list">
       <div class="heade-item">
         <span class="num">0</span>
@@ -31,6 +31,9 @@
 <script>
   export default {
     name: 'about-index',
+    props: {
+      userinfo: Object
+    },
     methods: {
       handleToLogin () {
         this.$router.push('/login')

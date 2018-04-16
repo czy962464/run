@@ -38,7 +38,10 @@
       }
     },
     created () {
-      axios.get('/static/hot.json')
+      // axios.get('/static/hot.json')
+      //     .then(this.handleGetDataSucc.bind(this))
+      //     .catch(this.handleGetDataErr.bind(this))
+      axios.get('/api/circle/hot')
           .then(this.handleGetDataSucc.bind(this))
           .catch(this.handleGetDataErr.bind(this))
     },
@@ -102,7 +105,7 @@
   .info-item{
     margin-top: .38rem;
     width: 100%;
-    height: 2.9rem;
+    height: 2rem;
     display: flex;
   }
   .info-bg{

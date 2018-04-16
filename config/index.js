@@ -12,10 +12,26 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/api': {
-            target: 'http://localhost:8080/',
+            target: 'http://localhost:3000/',
             pathRewrite: {
-                '/api': '/static'
+                '/api': '/api'
             }
+        },
+        "/code": {
+            target: "https://open.ucpaas.com/ol/sms/sendsms/",
+            logLevel: 'debug',
+            pathRewrite: {
+                '/code': '/'
+            },
+            changeOrigin: true
+        },
+        "/map": {
+            target: "https://m.amap.com/navi/",
+            logLevel: 'debug',
+            pathRewrite: {
+                '/map': '/'
+            },
+            changeOrigin: true
         }
     },
 

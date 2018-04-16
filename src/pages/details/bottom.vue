@@ -1,7 +1,9 @@
 <template>
   <div class="bottom">
-  	<img src="../../../static/img/emoji.png" class="bottom-img">
-  	我也是有底线的人
+  	<p class="bottom-name">
+      <img src="../../../static/img/emoji.png" class="bottom-img">
+      我也是有底线的人
+    </p>
   	<div class="bottom-bg">
   		<img src="../../../static/img/detabotbg.png" class="bg">
   		<img src="../../../static/img/detabotbg.png" class="bg">
@@ -27,14 +29,17 @@
   	height: .3rem;
   }
   .bottom-bg{
-	position: absolute;
-	bottom: .41rem;
-	left: .21rem;
-	right: .21rem;
-	display: flex;
-	justify-content: space-between;
+  	position: absolute;
+  	bottom: .41rem;
+  	left: .21rem;
+  	right: .21rem;
+  	display: flex;
+  	justify-content: space-between;
   }
   .bg{
   	width: 2.24rem;
+  }
+  .bottom-name{
+    width: 100%;
   }
 </style>

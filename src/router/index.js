@@ -8,6 +8,8 @@ import Login from '@/pages/login/index'
 import Details from '@/pages/details/index'
 import Issue from '@/pages/issue/index'
 import Information from '@/pages/information/index'
+import MapIndex from '@/pages/map/index'
+import UserInfo from '@/pages/userinfo/index'
 
 Vue.use(Router)
 
@@ -52,6 +54,16 @@ export default new Router({
       path: '/information/:id',
       name: 'Information',
       component: Information
+    },
+    {
+      path: '/map',
+      name: 'MapIndex',
+      component: MapIndex
+    },
+    {
+      path: '/userinfo',
+      name: 'UserInfo',
+      component: UserInfo
     }
   ]
 })

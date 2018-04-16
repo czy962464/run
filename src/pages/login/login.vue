@@ -50,8 +50,8 @@
           if (this.handleValidate(this.$refs.loginUser.value)) {
             this.username = this.$refs.loginUser.value
             this.password = this.$refs.loginPwd.value
-            if (this.password && this.phone) {
-              axios.post('/api/user/login_user', {
+            if (this.pwd && this.phone) {
+              axios.post('/api/user/login', {
                 username: this.username,
                 password: this.password
               })
@@ -63,8 +63,8 @@
       },
       handleUserLoginSucc (res) {
         res = (res.data) ? res.data : null
-        if ((res.other && this.handleValidate(this.$refs.loginUser.value)) || (res.other)) {
-          document.cookie = 'userid =' + res.other
+        if ((res.data.login && this.handleValidate(this.$refs.loginUser.value)) || (res.data.login)) {
+          document.cookie = 'userid =' + res.data.userInfo.username
           this.$router.push('/about')
         }
       },

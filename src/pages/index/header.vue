@@ -5,7 +5,7 @@
         <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1&site=12" class="iframe">
         </iframe>
       </div>
-      <div class="more-cont">
+      <div class="more-cont" @click='handleUpdatePwd' ref='cont'>
         <span class="more">+</span>
       </div>
     </div>
@@ -14,7 +14,12 @@
 
 <script>
   export default {
-    name: 'index'
+    name: 'index',
+    methods: {
+      handleUpdatePwd () {
+        this.$emit('change')
+      }
+    }
   }
 </script>
 
