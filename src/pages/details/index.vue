@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <details-header></details-header>
-    <introduce></introduce>
+    <introduce :detaList = "detaList"></introduce>
     <project></project>
     <activity></activity>
     <contact></contact>
@@ -19,6 +19,11 @@
   import DetailBottom from './bottom'
   export default {
     name: 'details-index',
+    data () {
+      return {
+        detaList: {}
+      }
+    },
     components: {
       DetailsHeader,
       Introduce,
@@ -40,7 +45,10 @@
             .catch(this.handleGetDetailErr.bind(this))
       },
       handleGetDetailSucc (res) {
-        console.log(res)
+        res = (res.data) ? res.data : null
+        if (res) {
+          this.detaList = res.data.detail[0]
+        }
       },
       handleGetDetailErr () {
         console.log('error')

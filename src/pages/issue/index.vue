@@ -3,7 +3,7 @@
     <div class="header">发布动态</div>
     <div class="content">
       <div class="input" >
-        <div contenteditable="true" class="input-info" ref="summary" @click="handleFocus" @change="handleDivChange">这一刻你想说的话。。。</div>
+        <p contenteditable="true" class="input-info" ref="summary" @click="handleFocus" @change="handleDivChange">这一刻你想说的话。。。</p>
         <div class="input-cont">
           <div class="img-box">
             <img src="" alt="" ref="imgshow">
@@ -45,9 +45,9 @@
     name: 'issue',
     data () {
       return {
-        title: '',
-        summary: '',
-        city: '',
+        sign: '',
+        content: '',
+        address: '',
         isBtn: false,
         isp: false
       }
@@ -56,27 +56,42 @@
       Bottom
     },
     methods: {
+      getCookie () {
+        var strcookie = document.cookie
+        var arr = strcookie.split('=')
+        if (arr[0] === 'userid') {
+          return arr[1]
+        }
+      },
       handleInputClick () {
         if (this.isBtn) {
-          this.title = this.$refs.title.value
-          this.summary = this.$refs.summary.innerHTML
-          this.city = this.$refs.localtion.value
-          if (this.title && this.summary && this.city) {
+          this.sign = this.$refs.title.value
+          this.content = this.$refs.summary.innerHTML
+          this.address = this.$refs.localtion.value
+          if (this.sign && this.content && this.address) {
             let file = this.$refs.img.files[0]
-            let param = new FormData()
-            param.append('file', file, file.name)
-            param.append('title', this.title)
-            param.append('summary', this.summary)
-            param.append('city', this.city)
-            let config = {
-              headers: { 'Content-Type': 'multipart/form-data' }
-            }
-            axios.post('/api/circle/add', param, config)
+            let data = new FormData()
+            data.append('file', file, file.name)
+            data.append('img', this.$refs.imgshow.src)
+            data.append('userid', 1)
+            data.append('sign', this.sign)
+            data.append('content', this.content)
+            data.append('address', this.address)
+            // axios.post('/api/circle/add', {
+            //   sign: this.sign,
+            //   content: this.content,
+            //   address: this.address,
+            //   userid: 1
+            // })
+            const instance=axios.create({
+              withCredentials: true
+            })
+            instance.post('/api/circle/add', data)
             .then((res) => {
               if (res) {
                 res = (res.data) ? res.data : null
-                if (res && res.success) {
-                  this.$push('/running')
+                if (res.data.add) {
+                  this.$router.push('/running')
                 }
               }
             })

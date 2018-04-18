@@ -5,8 +5,7 @@
     <div class="intro-main">
       <div class="intro-title">公司介绍</div>
       <div class="intro-desc">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;潜能健身提供各种完善且先进的康体健身设施,包括健身房、健美操室、美容美发中心、乒乓球室、室内游泳池、桑拿室等。<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们将为您的健身休闲活动提供周到细致的服务。
+        {{detaList.desc}}
       </div>
     </div>
   </div>
@@ -14,7 +13,10 @@
 
 <script>
   export default {
-    name: 'details-intro'
+    name: 'details-intro',
+    props: {
+      detaList: Object
+    }
   }
 </script>
 
@@ -56,5 +58,8 @@
     color: #fff;
     padding: .54rem .22rem;
     line-height: .38rem;
+    height: 2.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 </style>

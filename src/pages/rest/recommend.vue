@@ -40,7 +40,7 @@
     },
     methods: {
       handleClickToInfo (id) {
-        this.$router.push('/information/id=' + id)
+        this.$router.push('/information?id=' + id)
       }
     }
   }
