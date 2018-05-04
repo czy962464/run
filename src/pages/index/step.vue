@@ -15,8 +15,8 @@
     </div>
     <div class="sport-list">
       <div class="sport" v-for="(item, index) in indexList" @click='handleTabStep(index)'>
-        <div class="img-box" >
-          <img :src="item.imgUrl" alt="">
+        <div class="img-box">
+          <img :src="item.imgUrl" alt="" ref='imgBox'>
         </div>
         <p class="sport-desc" :key="item.id">{{item.desc}}</p>
       </div>
@@ -40,8 +40,14 @@
       handleTabStep (index) {
         for (var i = 0; i < this.species.length; i++) {
           this.species[i].isShow = false
+          this.$refs.imgBox[i].src = this.indexList[i].imgUrl
+          this.$refs.imgBox[0].src = this.indexList[0].imgUrl.substr(0, 20) + 1 + this.indexList[0].imgUrl.substring(20)
           if (i === index) {
+            this.$refs.imgBox[index].src = this.indexList[index].imgUrl.substr(0, 20) + 1 + this.indexList[index].imgUrl.substring(20)
             this.species[index].isShow = true
+          }
+          if(index === 0){
+            this.$refs.imgBox[0].src = this.indexList[0].imgUrl
           }
         }
       }

@@ -173,12 +173,13 @@
   .input-cont .img-box {
     float: left;
     width: 1.4rem;
-    height: 0;
+    height: 1.4rem;
     padding-bottom: 1.4rem;
     margin-right: .2rem;
   }
   .img-box img {
     width: 100%;
+    height: 100%;
   }
   .change-file {
     opacity: 0;
