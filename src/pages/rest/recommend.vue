@@ -4,8 +4,8 @@
       <div class="list" v-for="item in reaList" :key="item.id" @click='handleClickToInfo(item.id)'> 
         <p class="title">{{item.title}}</p>
         <div class="img-box">
-          <div class="img-cont" v-for="items in item.imgBox" :key="items.imgUrl">
-            <img :src="items.imgUrl" alt="">
+          <div class="img-cont" v-for='(items, index) in item.imgBox.replace(/"/g, "").split(",")' :key="index">
+            <img :src="items" alt="">
           </div>
         </div>
         <div class="desc">
@@ -24,7 +24,7 @@
   export default {
     name: 'rest',
     props: {
-      reaList: Array
+      reaList: Array,
     },
     watch: {
       reaList () {
@@ -77,9 +77,11 @@
   }
   .img-cont {
     width: 33.33%;
+    height: 1.6rem;
     padding: 0 0.1rem;
   }
   .img-cont img {
     width: 100%;
+    height: 100%;
   }
 </style>

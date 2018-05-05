@@ -33,20 +33,19 @@
             events: {
               init (o) {
                 // o 是高德地图定位插件实例
-                  o.getCurrentPosition((status, result) => {
-                    if (result && result.position) {
-                      timer = setInterval(function(){
-                        self.lng = result.position.lng
-                        self.lat = result.position.lat
-                        self.center = [self.lng, self.lat]
-                        self.loaded = true
-                        arr = [self.lng, self.lat]
-                        brr.push(arr)
-                        self.$nextTick()
-                        console.log(self.lng)
-                      },1000)
-                    }
-                  })
+                // setInterval(() => {
+                o.getCurrentPosition((status, result) => {
+                  if (result && result.position) {
+                    self.lng = result.position.lng
+                    self.lat = result.position.lat
+                    self.center = [self.lng, self.lat]
+                    self.loaded = true
+                    arr = [self.lng, self.lat]
+                    brr.push(arr)
+                    self.$nextTick()
+                  }
+                })
+                // }, 4000)
               }
             }
           }, {
@@ -74,7 +73,6 @@
       },
       methods: {
         handleBackIndex () {
-          clearInterval(timer)
           this.$router.push('/')
         }
       }

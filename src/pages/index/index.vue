@@ -4,7 +4,7 @@
     <index-content v-show='isShow'></index-content>
     <index-step :indexList="indexList" :species='species'></index-step>
     <index-canvas></index-canvas>
-  	<!-- <install></install> -->
+  	<install></install>
     <motion-data :movement='movement'></motion-data>
     <bottom></bottom>
   </div>
@@ -16,7 +16,7 @@
   import IndexHeader from './header.vue'
   import IndexContent from './content.vue'
   import IndexStep from './step.vue'
-  // import Install from './install'
+  import Install from './install'
   import MotionData from './data'
   import Bottom from 'components/common/bottom'
   export default {
@@ -34,7 +34,7 @@
       IndexStep,
       IndexCanvas,
       Bottom,
-      // Install,
+      Install,
       MotionData,
       IndexContent
     },

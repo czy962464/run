@@ -32,7 +32,7 @@
       handleSuccessNews (res) {
         res = (res.data) ? res.data : null
         if (res && res.data) {
-          this.reaList = res.data.reaList
+          this.reaList = res.data.reaList[0]
         }
       },
       handleErrorNews () {
@@ -40,13 +40,11 @@
       }
     },
     created () {
-      console.log(123)
-      let id = this.$router.history.current.params.id.substring(3)
+      let id = this.$router.history.current.query.id
       this.handleToNews(id)
     },
     activated () {
-      console.log(123)
-      let id = this.$router.history.current.params.id.substring(3)
+      let id = this.$router.history.current.query.id
       this.handleToNews(id)
     }
   }

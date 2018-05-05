@@ -15,6 +15,7 @@
         <input class="txt" type="password" placeholder="请输入密码" ref='loginPwd' @blur.stop="handlePassword" @focus="handleFocus">
       </p>
       <button class="btn" @click='login'>登录</button>
+      <!-- <button class="btn" @click='loginQQ'>QQ登录</button> -->
       <span class="log-reg" @click='handleToRegister'>没有账号？马上<a class="a-reg">注册</a></span>
     </div>
   </transition>
@@ -61,11 +62,29 @@
           }
         }
       },
+      // loginQQ () {
+      //   axios({
+      //     type: 'GET',
+      //     url: 'https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=1106851288&redirect_uri=localhost:8080&state=test',
+      //     dataType: 'jsonp'
+      //   })
+      //   .then(this.handleQQLoginSucc.bind(this))
+      //   .catch(this.handleQQLoginErr.bind(this))
+      // },
+      // handleQQLoginSucc (res) {
+      //   console.log(res)
+      // },
+      // handleQQLoginErr () {
+      //   console.log('error')
+      // },
       handleUserLoginSucc (res) {
         res = (res.data) ? res.data : null
         if ((res.data.login && this.handleValidate(this.$refs.loginUser.value)) || (res.data.login)) {
-          document.cookie = 'userid =' + res.data.userInfo.username
+          console.log(res.data.userInfo[0])
+          document.cookie = 'userid =' + res.data.userInfo[0].id
           this.$router.push('/about')
+        } else {
+          alert('用户名密码错误')
         }
       },
       handleUserLoginErr () {

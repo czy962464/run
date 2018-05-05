@@ -3,7 +3,7 @@
     <div class="bg-img">
       <img src="../../assets/base/img/bg.jpg" alt="">
     </div>
-  	<div class="step-number" 
+    <div class="step-number" 
         v-for='(specItem, index) in species' 
         :key='specItem.id'
         :class="{'isActive': specItem.isShow}" 
@@ -46,7 +46,7 @@
             this.$refs.imgBox[index].src = this.indexList[index].imgUrl.substr(0, 20) + 1 + this.indexList[index].imgUrl.substring(20)
             this.species[index].isShow = true
           }
-          if(index === 0){
+          if (index === 0) {
             this.$refs.imgBox[0].src = this.indexList[0].imgUrl
           }
         }

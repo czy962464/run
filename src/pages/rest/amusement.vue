@@ -1,5 +1,5 @@
 <template>
-  <div class="index-recreation" ref="scroller">
+  <div class="index-amusement" ref="scroller">
     <div>
       <div class="content">
         <video :src="reaVideo.videoUrl" class="video" controls :poster="reaVideo.imgUrl"></video>
@@ -31,7 +31,7 @@
 <script>
   import BScroll from 'better-scroll'
   export default {
-    name: 'recreation',
+    name: 'amusement',
     props: {
       reaList: Array,
       reaVideo: Object,
@@ -58,7 +58,7 @@
 </script>
 
 <style scoped>
-  .index-recreation {
+  .index-amusement {
     margin: .2rem;
     flex: 1;
     background: #fff;

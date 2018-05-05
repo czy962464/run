@@ -1,21 +1,24 @@
 <template>
   <div class="userinfo">
     <user-header></user-header>
+    <user-container></user-container>
   </div>
 </template>
 
 <script>
   import UserHeader from './header.vue'
+  import UserContainer from './container.vue'
   export default {
     name: 'user-info',
     components: {
-      UserHeader
+      UserHeader,
+      UserContainer
     }
   }
 </script>
 
 <style scoped>
-  .index {
+  .userinfo {
     display: flex;
     flex-direction: column;
     position: absolute;

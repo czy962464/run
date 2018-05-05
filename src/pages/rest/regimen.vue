@@ -1,15 +1,6 @@
 <template>
-  <div class="index-recreation" ref="scroller">
+  <div class="regimen" ref='scroller'>
     <div>
-      <div class="content">
-        <video :src="reaVideo.videoUrl" class="video" controls :poster="reaVideo.imgUrl"></video>
-        <div class="desc">
-          <p>{{reaVideo.style}}</p>
-          <p>{{reaVideo.author}}</p>
-          <p>评论{{reaVideo.comment}}</p>
-          <p>{{reaVideo.time}}</p>
-        </div>
-      </div>
       <div class="list" v-for="item in reaList" :key="item.id" @click='handleClickToInfo(item.id)'> 
         <p class="title">{{item.title}}</p>
         <div class="img-box">
@@ -31,14 +22,12 @@
 <script>
   import BScroll from 'better-scroll'
   export default {
-    name: 'recreation',
+    name: 'regimen',
     props: {
       reaList: Array,
-      reaVideo: Object,
-      imgBox: Array
     },
     watch: {
-      reaVideo () {
+      reaList () {
         this.$nextTick(() => {
           this.scroll.refresh()
         })
@@ -58,18 +47,11 @@
 </script>
 
 <style scoped>
-  .index-recreation {
-    margin: .2rem;
+  .regimen{
+    padding: .2rem .2rem 0;
     flex: 1;
     background: #fff;
     overflow: hidden;
-  }
-  .content {
-    padding: .2rem .3rem;
-    border-bottom: 1px solid #000;
-  }
-  .video {
-    width: 100%;
   }
   .desc {
     display: flex;

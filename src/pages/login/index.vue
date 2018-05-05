@@ -43,7 +43,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .index{
     position: absolute;
     width: 100%;

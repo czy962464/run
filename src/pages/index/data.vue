@@ -81,8 +81,6 @@
   .data-info{
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
     background: #e8e7e7;
     border-radius: .1rem;
   }
@@ -100,7 +98,6 @@
     color: #3cd191;
   }
   .data-con{
-    flex: 1;
     display: flex;
     text-align: center;
     justify-content: space-around;

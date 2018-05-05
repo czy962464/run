@@ -34,7 +34,6 @@
       }
     },
     activated () {
-      console.log(123)
       if (this.getCookie()) {
         this.isLogin = true
         this.getUserInfoData()
@@ -53,7 +52,7 @@
       handleUserInfoSucc (res) {
         res = (res.data) ? res.data : null
         if (res) {
-          this.userinfo = res.data.userInfo
+          this.userinfo = res.data.userInfo[0]
         }
       },
       handleUserInfoErr () {
@@ -64,7 +63,7 @@
       },
       handleChangeSaveInfo (nickname, signature, home, emotional) {
         axios.post('/api/user/update', {
-          userid: this.getCookie(),
+          id: this.getCookie(),
           nickname: nickname,
           signature: signature,
           home: home,
@@ -82,9 +81,16 @@
       },
       getCookie () {
         var strcookie = document.cookie
-        var arr = strcookie.split('=')
-        if (arr[0] === 'userid') {
-          return arr[1]
+        var arrcookie = strcookie.split(';')
+        var arr = []
+        for (var i = 0; i < arrcookie.length; i++) {
+          arr = arrcookie[i].split('=')
+          console.log(arr)
+          if (arr[0] === 'userid') {
+            return arr[1]
+          } else {
+            return false
+          }
         }
       }
     }

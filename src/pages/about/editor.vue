@@ -10,8 +10,8 @@
       </div>
       <i class="iconfont head-icon">&#xe659;</i>
     </div>
-    <h2 class="about-title">昵称：<input ref='nickname' value='新导航人' type="text" class="input-nickname" maxlength=6 /></h2>
-    <h4 class="desc">签名：<input ref='signature' value='' type="text" class="input-nickname" maxlength=10 /></h4>
+    <h2 class="about-title">昵称：<input ref='nickname' :value='userinfo.nickname' type="text" class="input-nickname" maxlength=6 /></h2>
+    <h4 class="desc">签名：<input ref='signature' :value='userinfo.signature' type="text" class="input-nickname" maxlength=10 /></h4>
     <div class="head-list">
       <div class="heade-item">
         <span class="num">0</span>
@@ -35,8 +35,8 @@
         </div>
         <div class="item-info">
           <h3>个人信息</h3>
-          <span class="item-desc">家乡：<input ref='home' type="text" class="input-editor" maxlength=10 /></span>
-          <span class="item-desc">情感：<input ref='emotional' type="text" class="input-editor" maxlength=10 /></span>
+          <span class="item-desc">家乡：<input ref='home' type="text" class="input-editor" maxlength=10 :value='userinfo.home'/></span>
+          <span class="item-desc">情感：<input ref='emotional' type="text" class="input-editor" maxlength=10 :value='userinfo.emotional'/></span>
         </div>
       </div>
       <div class="con-item item-account">

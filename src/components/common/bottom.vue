@@ -63,7 +63,7 @@
     display: flex;
     height: .98rem;
     background: #fff; 
-    /*position: fixed;*/
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;

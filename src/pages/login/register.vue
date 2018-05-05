@@ -63,8 +63,7 @@
             url: '/api/user/reg',
             data: {
               username: this.username,
-              password: this.password,
-              code: this.code
+              password: this.password
             }
           }).then(this.handleUserRegisterSucc.bind(this))
           .catch(this.handleUserRegisterErr.bind(this))
@@ -119,6 +118,7 @@
       handlePhoneCodeSucc (res) {
         res = (res.data) ? res.data : null
         this.code = this.randomcode
+        // this.code = res.code
       },
       handleDataCorrect (res) {
         this.inputCode = this.$refs.codenum.value

@@ -10,6 +10,7 @@ import Issue from '@/pages/issue/index'
 import Information from '@/pages/information/index'
 import MapIndex from '@/pages/map/index'
 import UserInfo from '@/pages/userinfo/index'
+import Friend from '@/pages/friend/index'
 
 Vue.use(Router)
 
@@ -51,7 +52,7 @@ export default new Router({
       component: Issue
     },
     {
-      path: '/information/:id',
+      path: '/information',
       name: 'Information',
       component: Information
     },
@@ -64,6 +65,11 @@ export default new Router({
       path: '/userinfo',
       name: 'UserInfo',
       component: UserInfo
+    },
+    {
+      path: '/friend',
+      name: 'Friend',
+      component: Friend
     }
   ]
 })
