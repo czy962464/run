@@ -14,6 +14,7 @@
         <span class="checkpassword" v-show="checkpassword">密码6-12数字/字母/下划线组合！</span>
         <input class="txt" type="password" placeholder="请输入密码" ref='loginPwd' @blur.stop="handlePassword" @focus="handleFocus">
       </p>
+      <span class="isNo" v-show="isNo">用户名密码错误</span>
       <button class="btn" @click='login'>登录</button>
       <!-- <button class="btn" @click='loginQQ'>QQ登录</button> -->
       <span class="log-reg" @click='handleToRegister'>没有账号？马上<a class="a-reg">注册</a></span>
@@ -30,6 +31,7 @@
         password: '',
         checkphone: false,
         checkpassword: false,
+        isNo: false,
         phone: false,
         pwd: false
       }
@@ -79,12 +81,11 @@
       // },
       handleUserLoginSucc (res) {
         res = (res.data) ? res.data : null
-        if ((res.data.login && this.handleValidate(this.$refs.loginUser.value)) || (res.data.login)) {
-          console.log(res.data.userInfo[0])
+        if (res.data.login && res.data.userInfo.length !== 0 && this.handleValidate(this.$refs.loginUser.value)) {
           document.cookie = 'userid =' + res.data.userInfo[0].id
           this.$router.push('/about')
         } else {
-          alert('用户名密码错误')
+          this.isNo = true
         }
       },
       handleUserLoginErr () {
@@ -119,6 +120,7 @@
       handleFocus () {
         this.checkphone = false
         this.checkpassword = false
+        this.isNo = false
       }
     }
   }
@@ -177,7 +179,7 @@
   .a-reg{
     text-decoration: underline;
   }
-  .checkphone, .checkpassword {
+  .checkphone, .checkpassword, .isNo{
     text-align: center;
     line-height: .5rem;
     color: red;

@@ -35,6 +35,7 @@
     },
     activated () {
       if (this.getCookie()) {
+        console.log(1)
         this.isLogin = true
         this.getUserInfoData()
       } else {
@@ -81,11 +82,10 @@
       },
       getCookie () {
         var strcookie = document.cookie
-        var arrcookie = strcookie.split(';')
+        var arrcookie = strcookie.split('; ')
         var arr = []
-        for (var i = 0; i < arrcookie.length; i++) {
+        for (let i = 0; i < arrcookie.length; i++) {
           arr = arrcookie[i].split('=')
-          console.log(arr)
           if (arr[0] === 'userid') {
             return arr[1]
           } else {

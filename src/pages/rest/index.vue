@@ -43,7 +43,8 @@
       Amusement
     },
     mounted () {
-      axios.get('/api/rest/list')
+      console.log('res')
+      axios.get('/api/res/lis')
            .then(this.handleSuccessRest.bind(this))
            .catch(this.handleErrorRest.bind(this))
       // axios.get('/api/rest.json')
@@ -52,6 +53,7 @@
     },
     methods: {
       handleSuccessRest (res) {
+        console.log(res)
         let ret = (res.data) ? (res = res.data) : res
         ret && (this.videoList = ret.data.video)
         ret && (this.reaList = ret.data.reaList)

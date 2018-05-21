@@ -36,7 +36,10 @@
         index === 0 && this.$router.push({ path: '/' })
         index === 1 && this.$router.push({ path: '/running' })
         index === 2 && this.$router.push({ path: '/issue' })
-        index === 3 && this.$router.push({ path: '/rest' })
+        // index === 3 && this.$router.push({ path: '/rest' })
+        if (index === 3) {
+          window.location = './new.html'
+        }
         index === 4 && this.$router.push({ path: '/about' })
       },
       handleIsRouter () {

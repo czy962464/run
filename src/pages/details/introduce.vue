@@ -5,7 +5,7 @@
     <div class="intro-main">
       <div class="intro-title">公司介绍</div>
       <div class="intro-desc">
-        {{detaList.desc}}
+        {{detaList.content}}
       </div>
     </div>
   </div>

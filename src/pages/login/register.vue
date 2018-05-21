@@ -93,16 +93,23 @@
                 this.$refs.codeBtn.innerHTML = '获取验证码'
               }
             }, 1000)
-            // axios.get('/static/code.json')
+            // axios({
+            //   method: 'post',
+            //   url: '/api/code',
+            //   data: {
+            //     sid: 'bbcf4dd1920b2f6e3f1dfab86ce1aa96',
+            //     token: 'd4ea631cbf617638388d3b1c2216d336',
+            //     appid: 'c9a69818c8404ff2ad85975d92140f3f',
+            //     templateid: '299745',
+            //     mobile: this.username,
+            //     param: this.randomcode
+            //   },
+            // })
             // .then(this.handlePhoneCodeSucc.bind(this))
             axios({
               method: 'post',
-              url: '/code',
+              url: '/api/code',
               data: {
-                sid: 'bbcf4dd1920b2f6e3f1dfab86ce1aa96',
-                token: 'd4ea631cbf617638388d3b1c2216d336',
-                appid: 'c9a69818c8404ff2ad85975d92140f3f',
-                templateid: '299745',
                 mobile: this.username,
                 param: this.randomcode
               },

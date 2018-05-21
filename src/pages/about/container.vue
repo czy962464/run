@@ -57,6 +57,7 @@
           最近一周健身： <span class="cum-num">{{userinfo.latestFitness}}</span>
         </div>
       </div>
+      <div class="loginout" ref='loginout' @click='handleLoginOut'>退出登录</div>
     </div>
   </div>
 </template>
@@ -68,6 +69,10 @@
       userinfo: Object
     },
     methods: {
+      handleLoginOut () {
+        document.cookie = 'userid = ' + ''
+        this.$router.push('/login')
+      }
       // handleChangeData (newHome, newEmotional) {
       //   this.$refs.home.innerHTML = newHome
       //   this.$refs.emotional.innerHTML = newEmotional
@@ -157,5 +162,15 @@
   .cum-num{
     width: .66rem;
     display: block;
+  }
+  .loginout{
+    height: .8rem;
+    width: 3rem;
+    border-radius: 5px;
+    background: #42c69a;
+    text-align: center;
+    line-height: .8rem;
+    color: #fff;
+    margin: .3rem auto;
   }
 </style>

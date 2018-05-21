@@ -1,5 +1,5 @@
 <template>
-  <div class="install border-top">
+  <!-- <div class="install border-top">
     <div class="install-title">
       今日
       <span class="title-num">2175</span>
@@ -9,7 +9,7 @@
       <div class="install-btn calculation">计步设置</div>
       <div class="install-btn synchro">同步设置</div>
     </div>
-  </div>
+  </div> -->
 </template>
 <script>
   export default {}

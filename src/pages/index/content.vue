@@ -3,7 +3,7 @@
     <ul>
       <li class="con-list" ref='address' @click='handleClick()'>当前位置</li>
       <li class="con-list" ref='pwd' @click='handleUpdatePwd()'>修改密码</li>
-      <li class="con-list" ref='pwd' @click='handleInsertFriend()'>好友管理</li>
+      <li class="con-list" @click='handleInsertFriend()'>好友管理</li>
     </ul>
   </div>
 </template>
