@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index" v-model='refre'>
     <before-login v-show='!isLogin'></before-login>
     <about-header @change='handleChangeInfo' :userinfo='userinfo' v-show='isLogin ? isShow : isLogin'></about-header>
     <container :userinfo='userinfo' v-show='isLogin ? isShow : isLogin' ref='contain'></container>
@@ -30,7 +30,13 @@
         isShow: true,
         isLogin: false,
         newHome: '',
-        newEmotional: ''
+        newEmotional: '',
+        refre: ''
+      }
+    },
+    watch : {
+      refre () {
+        this.getUserInfoData()
       }
     },
     activated () {

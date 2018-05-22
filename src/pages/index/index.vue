@@ -58,6 +58,9 @@
       handleChange () {
         this.isShow = !this.isShow
       }
+    },
+    created () {
+      document.cookie = 'userid = ' + ''
     }
   }
 </script>
